@@ -1,0 +1,70 @@
+#Stwórz wykres gęstości dla rozkładu zmiennej określającej zasięg na autostradzie na  jednym galonie paliwa (zmienna 'hwy') oraz dodaj do niego tytuł.
+
+library(ggplot2)
+install.packages("mpg")
+data("mpg")
+help("mpg")
+attach(mpg)
+baza_mpg <- ggplot(data = mpg)
+
+baza_mpg + geom_density(aes(x = hwy, col = "red")) + labs(title = "Zasieg na autostradzie na jednym galonie paliwa")
+
+####2####
+#Stwórz wykres punktowy, na którym zaprezentujesz zależność pomiędzy zmienną określającą pojemność silnika 'displ' (na osi X) a zmienną opisującą zasięg na galonie paliwa w cyklu miejskim 'cty'.
+#Dodaj tytuł wykresu oraz ponazywaj osie X i Y.
+ggplot3 <- ggplot(data = mpg) + aes(x = displ, y = cty)
+ggplot3
+
+ggplot3 <- ggplot3 + geom_point() + labs(title = "Zależnosc pomiedzy pojemnoscia silnika a zasiegiem na galonie paliwa w cyklu miejskim", x = "Pojemnosc silnika", y = "Zasieg na galownie paliwa w cyklu miejskim")
+ggplot3
+
+####3####
+#Zmodyfikuj wykres z zadania 2 tak, aby kolory punktów na wykresie zależały od rodzaju paliwa w danym samochodzie (zmienna 'fl').
+ggplot3 <- ggplot(data = mpg) + aes(x = displ, y = cty, col = fl)
+ggplot3
+
+ggplot3 <- ggplot3 + geom_point() + labs(title = "Zależnosc pomiedzy pojemnoscia silnika a zasiegiem na galonie paliwa w cyklu miejskim", x = "Pojemnosc silnika", y = "Zasieg na galownie paliwa w cyklu miejskim")
+ggplot3
+
+####4####
+#Wykres z zadania 3 podziel tak, aby w każdym "kafelku" znajdował się wykres dla obserwacji z konkretnym rodzajem układu napędowego (zmienna 'drv').
+#(wykorzystaj funkcję facet_wrap lub facet_grid)
+#wszystkie trzy wykresy ("kafelki") powinny znaleźć się w jednym rzedzie
+ggplot3 + facet_grid(~drv)
+
+####5####
+# Przygotuj wykres punktowy, na którym zostaną przedstawione obserwacje, w których zmienna 'male' ma wartości powyżej mediany tej zmiennej.
+# Oś Y ma określać współczynnik kradzieży ('robbery'), a oś X populacje stanu ('population').
+# Kolor punktów ma różnić się w zależności od wartości zmiennej 'law'.
+# Dodaj tytuł oraz etykiety osi wykresu.
+# Uwaga: Dla uproszczenia pomijamy fakt, iż są to dane panelowe, a zatem nie przejmujemy się tym, że dane są zebrane dla pewnego przedziału czasowego.
+
+library(ggplot2)
+baza_zadanie_2 <- (data = Guns$male)
+mediana_guns <- median(baza_2)
+
+guns_1 <- subset(Guns, male > 15.89517)
+View(guns_1)
+attach(Guns)
+ggplot_1 <- ggplot(data = guns_1) + aes(x = population, y = robbery, color = law)
+ggplot_1
+
+ggplot_1 + geom_point() + labs(title = "Obserwacja meskiego procenta populacji w wieku 10-29 lat", x = "Populacja", y = "Wskaznik rabunkow")
+
+####Pętle####
+####6####
+# Zadanie znajdź karpia w wektorze 1. Wykorzystaj %in% i pętle.
+# wykorzystaj zmienną pomocniczą do licznika oraz zmienną karp
+# pętla ma się skończyć, gdy słowo karp zostanie znalezione. wektor_1 <- c("balwan", "Mikolaj", "Swieta", "Wigilia", "karp", "makowiec", "oplatek") 
+# karp <- "karp"
+
+wektor_1 <- c("balwan", "Mikolaj", "Swieta", "Wigilia", "karp", "makowiec", "oplatek") 
+karp <- "karp"
+
+j<-1
+for(i in wektor_1){
+  if(karp %in% i)
+    print(j)
+  j<-j+1}
+  
+  
